@@ -1,9 +1,9 @@
 {
-    "name": "scandio/lmvc-util",
+    "name": "scandio/lmvc-utils",
     "type": "library",
-    "description": "LMVC-util is a set of utilities for lmvc, lmvc-modules and troba",
+    "description": "LMVC-utils is a set of utilities for lmvc, lmvc-modules and troba",
     "keywords": ["php", "library", "lmvc", "scandio", "lmvc-modules", "troba"],
-    "homepage": "https://github.com/scandio/lmvc-util",
+    "homepage": "https://github.com/scandio/lmvc-utils",
     "license": "MIT",
     "minimum-stability": "stable",
 

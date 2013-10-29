@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6041b511-df95-4aab-80df-35f7beca7da0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Scandio/lmvc/util/.gitkeep" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-    </list>
+    <list default="true" id="6041b511-df95-4aab-80df-35f7beca7da0" name="Default" comment="" />
     <ignored path="lmvc-util.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
