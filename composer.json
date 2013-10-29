@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Scandio\\lmvc\\util": "lib/"
+            "Scandio\\lmvc\\utils": "lib/"
         }
     }
 }
