@@ -1,10 +1,10 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\interfaces;
+namespace Scandio\lmvc\utils\logger\interfaces;
 
 /**
  * Interface ScribeInterface
- * @package Scandio\lmvc\modules\logger\interfaces
+ * @package Scandio\lmvc\utils\logger\interfaces
  *
  * Interface which every scribe (a worker for a logger) should implement.
  */

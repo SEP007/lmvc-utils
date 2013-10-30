@@ -1,6 +1,6 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger;
+namespace Scandio\lmvc\utils\logger;
 
 /**
  * Class Logger

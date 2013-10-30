@@ -1,10 +1,10 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\loggers;
+namespace Scandio\lmvc\utils\logger\loggers;
 
 /**
  * Class LogLevel
- * @package Scandio\lmvc\modules\logger\loggers
+ * @package Scandio\lmvc\utils\logger\loggers
  *
  * Describes all possible log levels of logger.
  */

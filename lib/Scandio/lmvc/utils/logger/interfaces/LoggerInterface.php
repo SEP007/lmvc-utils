@@ -1,6 +1,6 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\interfaces;
+namespace Scandio\lmvc\utils\logger\interfaces;
 
 /**
  * Describes a logger instance

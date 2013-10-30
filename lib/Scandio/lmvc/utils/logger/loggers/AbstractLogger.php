@@ -1,8 +1,8 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\loggers;
+namespace Scandio\lmvc\utils\logger\loggers;
 
-use Scandio\lmvc\modules\logger\interfaces;
+use Scandio\lmvc\utils\logger\interfaces;
 
 /**
  * This is a simple Logger implementation that other Loggers can inherit from.

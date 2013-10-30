@@ -1,12 +1,12 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\formatters;
+namespace Scandio\lmvc\utils\logger\formatters;
 
-use Scandio\lmvc\modules\logger\interfaces;
+use Scandio\lmvc\utils\logger\interfaces;
 
 /**
  * Class AbstractLogger
- * @package Scandio\lmvc\modules\logger\formatters
+ * @package Scandio\lmvc\utils\logger\formatters
  *
  * An abstract formatter abstracting from general purpose methods for
  * every subsequent child formatter.

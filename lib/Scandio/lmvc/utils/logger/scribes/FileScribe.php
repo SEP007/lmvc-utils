@@ -1,6 +1,6 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\scribes;
+namespace Scandio\lmvc\utils\logger\scribes;
 
 class FileScribe extends AbstractScribe
 {

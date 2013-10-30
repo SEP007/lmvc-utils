@@ -1,12 +1,12 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\formatters;
+namespace Scandio\lmvc\utils\logger\formatters;
 
-use Scandio\lmvc\modules\logger\traits;
+use Scandio\lmvc\utils\logger\traits;
 
 /**
  * Class FileLogFormatter
- * @package Scandio\lmvc\modules\logger\formatters
+ * @package Scandio\lmvc\utils\logger\formatters
  *
  * Formatter for logging into files.
  */

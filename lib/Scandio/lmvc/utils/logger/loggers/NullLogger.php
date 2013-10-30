@@ -1,6 +1,6 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\loggers;
+namespace Scandio\lmvc\utils\logger\loggers;
 
 /**
  * This Logger can be used to avoid conditional log calls

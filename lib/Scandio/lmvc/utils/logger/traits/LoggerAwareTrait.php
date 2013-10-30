@@ -1,6 +1,6 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\traits;
+namespace Scandio\lmvc\utils\logger\traits;
 
 /**
  * Basic Implementation of LoggerAwareInterface

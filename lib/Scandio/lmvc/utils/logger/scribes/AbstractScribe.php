@@ -1,9 +1,9 @@
 <?php
 
-namespace Scandio\lmvc\modules\logger\scribes;
+namespace Scandio\lmvc\utils\logger\scribes;
 
-use Scandio\lmvc\modules\logger\loggers;
-use Scandio\lmvc\modules\logger\interfaces;
+use Scandio\lmvc\utils\logger\loggers;
+use Scandio\lmvc\utils\logger\interfaces;
 
 class AbstractScribe implements interfaces\ScribeInterface
 {
