@@ -1,0 +1,6 @@
+{
+    "assetpipeline" : {
+        "useFolders": true,
+        "caching": false
+    }
+}

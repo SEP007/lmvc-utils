@@ -24,6 +24,7 @@
     },
     "assetpipeline" : {
         "useFolders": true,
+        "test": false,
         "assetDirectories": {
             "js": {
                 "fallbacks": ["../bower", "../composer"]

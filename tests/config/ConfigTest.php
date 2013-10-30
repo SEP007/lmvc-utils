@@ -48,4 +48,18 @@ class ConfigTest extends PHPUnit_Framework_TestCase
         $this->assertNotEmpty(Config::get()->views);
         $this->assertEquals('./app/views', Config::get()->views[0]);
     }
+
+    public function testMergingConfigFilesByArrayKeys()
+    {
+        # Ordinary value in config.json
+        $this->assertTrue(Config::get()->assetpipeline->useFolders);
+
+        Config::initialize(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config2.json');
+
+        # Overwritten but equal in config2.json
+        $this->assertTrue(Config::get()->assetpipeline->useFolders);
+
+        # Check again ordinary value should not be set in current merge algo
+        $this->assertEmpty(@Config::get()->assetpipeline->test);
+    }
 }
