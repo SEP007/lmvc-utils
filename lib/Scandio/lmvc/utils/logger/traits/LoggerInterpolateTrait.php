@@ -11,7 +11,7 @@ trait LoggerInterpolateTrait
     /**
      * Interpolates context values into the message placeholders.
      */
-    public function interpolate($message, array $context = array())
+    private function _interpolate($message, array $context = array())
     {
         // build a replacement array with braces around the context keys
         $replace = array();

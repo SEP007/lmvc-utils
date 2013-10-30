@@ -13,6 +13,9 @@ use Scandio\lmvc\modules\logger\interfaces;
  */
 abstract class AbstractLogger implements interfaces\LoggerInterface
 {
+    # This is what the concrete logger does (first NullLogger)
+    abstract public function log($level, $message, array $context = array());
+
     /**
      * System is unusable.
      *

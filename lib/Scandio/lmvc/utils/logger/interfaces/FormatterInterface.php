@@ -11,12 +11,5 @@ namespace Scandio\lmvc\modules\logger\interfaces;
  */
 interface FormatterInterface
 {
-    /**
-     * Function formatting a log $entry
-     *
-     * @param  array $entry to be formatted
-     *
-     * @return mixed The formatted record
-     */
-    public function format($entry);
+    public function format($message, $context);
 }

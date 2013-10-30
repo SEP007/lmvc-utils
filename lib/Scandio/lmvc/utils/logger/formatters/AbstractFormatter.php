@@ -18,7 +18,7 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
         $logFormat  = null;
 
     # This is what the concrete formatter does
-    abstract public function format($entry);
+    abstract public function format($message, $context);
 
     /**
      * Formats a given input by trying to normalize it into a decent string representation.
@@ -102,19 +102,13 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
      */
     protected function normalizeException($exception)
     {
-        $data = [
-            'class' => get_class($exception),
-            'message' => $exception->getMessage(),
-            'file' => $exception->getFile().':'.$exception->getLine(),
-        ];
-
         return [
             'type'      => 'Exception',
             'extra'     => [
-                $exception->getMessage(),
+                get_class($exception),
                 $exception->getFile().':'.$exception->getLine()
             ],
-            'payload'   => $normalized
+            'payload'   => $exception->getMessage()
         ];
     }
 

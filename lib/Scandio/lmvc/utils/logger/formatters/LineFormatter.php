@@ -2,6 +2,8 @@
 
 namespace Scandio\lmvc\modules\logger\formatters;
 
+use Scandio\lmvc\modules\logger\traits;
+
 /**
  * Class FileLogFormatter
  * @package Scandio\lmvc\modules\logger\formatters
@@ -10,6 +12,8 @@ namespace Scandio\lmvc\modules\logger\formatters;
  */
 class LineFormatter extends AbstractFormatter
 {
+    use traits\LoggerInterpolateTrait;
+
     /**
      * Formats a a log request into a single line.
      *
@@ -19,16 +23,8 @@ class LineFormatter extends AbstractFormatter
      * @param array $entry
      * @return string
      */
-    public function format($entry)
+    public function format($message, $context)
     {
-        $normalized = parent::normalize($entry);
-
-        $logString =
-          '[' . date("m.d.y - H:i:s") . ']' .
-          ' (' . $normalized['type'] . ')' .
-          ' : ' . $normalized[ $this->toJson($normalized['payload']) ] .
-          ' - ' . $this->toJson( $normalized['extra'] );
-
-        return $logString;
+        return $this->_interpolate($message, $context);
     }
 }
