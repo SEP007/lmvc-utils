@@ -9,23 +9,43 @@ use Scandio\lmvc\utils\config\Config;
  */
 class ConfigTest extends PHPUnit_Framework_TestCase
 {
-    protected function setUp()
+    public static function setUpBeforeClass()
     {
-        Config::initialize('config.json');
+
+    }
+
+    public function testUninitializedConfig()
+    {
+        # Silent to omit warning and test for empty value
+        $this->assertEmpty(@Config::get()->appPath);
     }
 
     public function testDefaultValues()
     {
+        Config::initialize();
 
+        $this->assertNotEmpty(Config::get()->appPath);
+        $this->assertEquals('./', Config::get()->appPath);
+
+        $this->assertNotEmpty(Config::get()->controllers);
+        $this->assertSameSize(Config::get()->views, [1]);
     }
 
     public function testAddingNewLocalConfigValues()
     {
+        Config::initialize(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config.json');
 
+        $this->assertNotEmpty(Config::get()->dsn);
+
+        $this->assertNotEmpty(Config::get()->username);
+        $this->assertEquals('root', Config::get()->username);
+
+        $this->assertTrue(Config::get()->assetpipeline->useFolders);
     }
 
     public function testOverwritingDefaultConfigValues()
     {
-
+        $this->assertNotEmpty(Config::get()->views);
+        $this->assertEquals('./app/views', Config::get()->views[0]);
     }
 }

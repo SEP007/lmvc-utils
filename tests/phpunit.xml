@@ -2,6 +2,7 @@
    <testsuites>
       <testsuite name="AssetPipeline">
          <directory suffix=".php">stringutils</directory>
+          <directory suffix=".php">config</directory>
       </testsuite>
    </testsuites>
 

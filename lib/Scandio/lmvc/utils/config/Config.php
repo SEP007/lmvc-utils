@@ -46,7 +46,7 @@ class Config
      *
      * @param string|null $configFile path and file name of a valid json config file
      */
-    public static function initialize($configFile)
+    public static function initialize($configFile = null)
     {
         if (!is_null($configFile) && file_exists($configFile)) {
             self::$config = json_decode(file_get_contents($configFile));
