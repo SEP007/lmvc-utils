@@ -4,7 +4,7 @@ namespace Scandio\lmvc\utils\config;
 
 /**
  * Class Config
- * @package Scandio\lmvc
+ * @package Scandio\lmvc\utils\config;
  */
 class Config
 {
