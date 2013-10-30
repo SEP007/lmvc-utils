@@ -17,6 +17,9 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
         $dateFormat = null,
         $logFormat  = null;
 
+    # This is what the concrete formatter does
+    abstract public function format($entry);
+
     /**
      * Formats a given input by trying to normalize it into a decent string representation.
      *
@@ -30,7 +33,12 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
         elseif ( $data instanceof \DateTime ) { return $this->normalizeDate($data); }
         elseif ( $data instanceof \Exception ) { return $this->normalizeException($data); }
         elseif ( is_object($data) ) { return $this->normalizeObject($data); }
-        else { return 'Unknown data type: ' . gettype($data); }
+        else {
+            return [
+                'type' => 'Unknown',
+                'type'  => gettype($data)
+            ];
+        }
     }
 
     /**
@@ -41,7 +49,11 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
      */
     protected function normalizeObject($object)
     {
-        return sprintf("[Object] (%s: %s)", get_class($object), $this->toJson($object));
+        return [
+            'type'      => 'Object',
+            'extra'     => [get_class($object)],
+            'payload'   => $object
+        ];
     }
 
     /**
@@ -58,7 +70,11 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
             $normalized[$key] = $this->normalize($value);
         }
 
-        return sprintf("[Traverable] (%s)", $this->toJson($normalized));
+        return [
+            'type'      => 'Traversable',
+            'extra'     => [],
+            'payload'   => $normalized
+        ];
     }
 
     /**
@@ -71,7 +87,11 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
     {
         $formattedDate =  $date->format($this->dateFormat);
 
-        return sprintf("[Date] (%s)", $formattedDate);
+        return [
+            'type'      => 'Date',
+            'extra'     => [],
+            'payload'   => $formattedDate
+        ];
     }
 
     /**
@@ -88,7 +108,14 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
             'file' => $exception->getFile().':'.$exception->getLine(),
         ];
 
-        return sprintf("[Exception] (%s)", $this->toJson($data));
+        return [
+            'type'      => 'Exception',
+            'extra'     => [
+                $exception->getMessage(),
+                $exception->getFile().':'.$exception->getLine()
+            ],
+            'payload'   => $normalized
+        ];
     }
 
     /**
