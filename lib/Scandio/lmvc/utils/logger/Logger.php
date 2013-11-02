@@ -3,6 +3,7 @@
 namespace Scandio\lmvc\utils\logger;
 
 use Scandio\lmvc\utils\logger\interfaces;
+use Scandio\lmvc\traits;
 
 /**
  * Class Logger
@@ -12,6 +13,8 @@ use Scandio\lmvc\utils\logger\interfaces;
  */
 class Logger extends loggers\NullLogger
 {
+    use traits\Singleton;
+
     protected
         $scribes = [];
 
