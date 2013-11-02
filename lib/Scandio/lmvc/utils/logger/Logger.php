@@ -2,6 +2,7 @@
 
 namespace Scandio\lmvc\utils\logger;
 
+use Scandio\lmvc\utils\config\Config;
 use Scandio\lmvc\utils\logger\interfaces;
 use Scandio\lmvc\traits;
 
@@ -17,6 +18,15 @@ class Logger extends loggers\NullLogger
 
     protected
         $scribes = [];
+
+    public function initialize()
+    {
+        $scribes = (array) Config::get()->logger->scribes;
+
+        foreach ($scribes as $scribe) {
+            $this->addScribe($scribe);
+        }
+    }
 
     /**
      * Logs with an arbitrary level.

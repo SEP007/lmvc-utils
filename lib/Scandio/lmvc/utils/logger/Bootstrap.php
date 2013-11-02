@@ -9,6 +9,8 @@ class Bootstrap extends \Scandio\lmvc\utils\bootstrap\Bootstrap
     public static function configure()
     {
         Config::initialize(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config.json');
+
+        Logger::instance()->initialize();
     }
 
     public function initialize()
