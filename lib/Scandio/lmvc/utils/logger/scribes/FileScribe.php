@@ -6,7 +6,7 @@ class FileScribe extends AbstractScribe
 {
     public function scribe($message, $context, $level)
     {
-        if ( !$this->_omitMessage() ) {
+        if ( !$this->_omitMessage($level) ) {
             $this->_write(
                 $this->getFormatter()->format($message, $context)
             );

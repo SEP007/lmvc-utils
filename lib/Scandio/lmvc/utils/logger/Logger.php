@@ -4,6 +4,7 @@ namespace Scandio\lmvc\utils\logger;
 
 use Scandio\lmvc\utils\config\Config;
 use Scandio\lmvc\utils\logger\interfaces;
+use Scandio\lmvc\utils\logger\loggers\LogLevel;
 use Scandio\lmvc\traits;
 
 /**
@@ -38,6 +39,9 @@ class Logger extends loggers\NullLogger
      */
     public function log($level, $message, array $context = array())
     {
+        # Global log level, no scribe should overwrite this. So don't call function on them
+        if ( LogLevel::bigger($level) ) { return false; }
+
         foreach ($this->scribes as $scribe) {
             $scribe->scribe($message, $context, $level);
         }
