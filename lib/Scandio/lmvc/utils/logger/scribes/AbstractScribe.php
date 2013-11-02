@@ -5,7 +5,7 @@ namespace Scandio\lmvc\utils\logger\scribes;
 use Scandio\lmvc\utils\logger\loggers;
 use Scandio\lmvc\utils\logger\interfaces;
 
-class AbstractScribe implements interfaces\ScribeInterface
+abstract class AbstractScribe implements interfaces\ScribeInterface
 {
     protected
       $level        = loggers\LogLevel::INFO,
@@ -31,5 +31,10 @@ class AbstractScribe implements interfaces\ScribeInterface
     protected function _omitMessage()
     {
         return false;
+    }
+
+    protected function formatLog($message, $context)
+    {
+        return $this->getFormatter()->format($message, $context);
     }
 } 
