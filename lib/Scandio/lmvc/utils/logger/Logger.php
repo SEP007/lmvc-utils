@@ -67,7 +67,7 @@ class Logger extends loggers\NullLogger
                 return true;
             }
         } else {
-            trigger_error(E_WARNING, 'Tried to register invalid logger scribe with namespace: ' . $namespace);
+            trigger_error('Tried to register invalid logger scribe with namespace: ' . $namespace, E_USER_WARNING);
         }
 
         return false;

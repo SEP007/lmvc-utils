@@ -30,7 +30,7 @@ class FileScribe extends AbstractScribe
         try {
             $this->_fileObject = new \SplFileObject($this->_logPath, 'a');
         } catch (\RuntimeException $ex) {
-            trigger_error('Logger scribe ' . __CLASS__ . ' could not open stream: ' . $this->_logPath . '.', E_WARNING);
+            trigger_error('Logger scribe ' . __CLASS__ . ' could not open stream: ' . $this->_logPath . '.', E_USER_WARNING);
         }
     }
 
@@ -38,7 +38,7 @@ class FileScribe extends AbstractScribe
     {
         $this->_logPath = $this->_getLogPath(Config::get()->logger->logRoot, $config->path);
         $this->_logFile = $config->file;
-        
+
         $this->setLevel($config->level);
 
         $this->_openStream();
