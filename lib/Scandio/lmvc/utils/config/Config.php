@@ -12,7 +12,7 @@ class Config
     /**
      * @var array default configuration to use if a property was not provided
      */
-    private static $defaultConfig = array(
+    private static $config = array(
         'appPath' => './',
         'controllers' => array('controllers'),
         'controllerPath' => array(),
@@ -20,11 +20,6 @@ class Config
         'viewPath' => array(),
         'modules' => array()
     );
-
-    /**
-     * @var object application settings
-     */
-    private static $config = null;
 
     /**
      * returns the instance of the singleton object
@@ -38,6 +33,7 @@ class Config
         if (is_null(self::$config)) {
             self::$config = new \stdClass();
         }
+
         return self::$config;
     }
 
@@ -49,14 +45,16 @@ class Config
     public static function initialize($configFile = null)
     {
         if (!is_null($configFile) && file_exists($configFile)) {
-            self::$config = json_decode(file_get_contents($configFile));
-            foreach (array_keys(self::$defaultConfig) as $entry) {
+            $overwrite = json_decode(file_get_contents($configFile));
+            self::$config = (array) self::$config;
+
+            foreach (array_keys((array) $overwrite) as $entry) {
                 if (!isset(self::$config->$entry)) {
-                    self::$config->$entry = self::$defaultConfig[$entry];
+                    self::$config[$entry] = $overwrite->$entry;
                 }
             }
-        } else {
-            self::$config = (object)self::$defaultConfig;
+
+            self::$config = (object) self::$config;
         }
     }
 }
