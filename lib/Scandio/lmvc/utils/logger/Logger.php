@@ -59,7 +59,9 @@ class Logger extends loggers\NullLogger
 
         if ( $this->_isValidScribe($scribeInstance) ) {
             if (!array_key_exists($namespace, $this->scribes)) {
-                $this->scribes[$namespace] = new $scribeInstance;
+                $scribeInstance->initialize();
+
+                $this->scribes[$namespace] = $scribeInstance;
 
                 return true;
             }

@@ -6,15 +6,17 @@ use Scandio\lmvc\utils\config\Config;
 
 class Bootstrap extends \Scandio\lmvc\utils\bootstrap\Bootstrap
 {
-    public static function configure()
+    public static function configure($logRootDirectory = null)
     {
         Config::initialize(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config.json');
+
+        if ($logRootDirectory !== null) { Config::get()->logger->logRoot = $logRootDirectory; }
 
         Logger::instance()->initialize();
     }
 
     public function initialize()
     {
-        $this->configure();
+
     }
 }

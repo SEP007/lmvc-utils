@@ -2,6 +2,8 @@
 
 namespace Scandio\lmvc\utils\logger\scribes;
 
+use Scandio\lmvc\utils\config\Config;
+
 class FileScribe extends AbstractScribe
 {
     private
@@ -32,10 +34,12 @@ class FileScribe extends AbstractScribe
 
     }
 
-    public function initialize($config)
+    public function initialize()
     {
-        $this->_logPath = $config->path;
-        $this->setLevel($config->level);
+        $config = Config::get()->logger;
+
+        $this->_logPath = $config->logRoot . DIRECTORY_SEPARATOR . $config->scribes->file->path;
+        $this->setLevel($config->scribes->file->level);
 
         $this->_openStream();
     }

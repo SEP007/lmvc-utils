@@ -1,8 +1,11 @@
 {
-    "level": "WARN",
-    "scribes": [{
-        "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\FileScribe",
-        "level": "INFO",
-        "path": "logs"
-    }]
+    "logger": {
+        "level": "WARN",
+        "logRoot": null,
+        "scribes": [{
+            "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\FileScribe",
+            "level": "INFO",
+            "path": "logs"
+        }]
+    }
 }
