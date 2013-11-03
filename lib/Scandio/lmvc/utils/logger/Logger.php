@@ -25,7 +25,7 @@ class Logger extends loggers\NullLogger
         $scribes = (array) Config::get()->logger->scribes;
 
         foreach ($scribes as $scribe) {
-            $this->addScribe($scribe);
+            $this->addScribe($scribe->namespace);
         }
     }
 
