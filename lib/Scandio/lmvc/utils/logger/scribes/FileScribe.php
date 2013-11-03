@@ -54,7 +54,7 @@ class FileScribe extends AbstractScribe
           $root . DIRECTORY_SEPARATOR . $scribe . DIRECTORY_SEPARATOR .
           $year . DIRECTORY_SEPARATOR . $month;
 
-        mkdir($path, 0777, true);
+        if (!is_dir($path)) { mkdir($path, 0777, true); }
 
         return $path;
     }
