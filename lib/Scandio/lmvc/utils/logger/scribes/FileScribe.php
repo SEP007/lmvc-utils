@@ -37,6 +37,8 @@ class FileScribe extends AbstractScribe
 
     public function initialize($config)
     {
+        parent::initialize($config);
+
         $this->_logPath = $this->_getLogPath(Config::get()->logger->logRoot, $config->path);
         $this->_logFile = date('d') . '.log';
 

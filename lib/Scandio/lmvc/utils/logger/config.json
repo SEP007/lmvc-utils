@@ -4,6 +4,7 @@
         "logRoot": null,
         "scribes": [{
             "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\FileScribe",
+            "formatter": "\\Scandio\\lmvc\\utils\\logger\\formatters\\LineFormatter",
             "level": "INFO",
             "path": "logs"
         }]

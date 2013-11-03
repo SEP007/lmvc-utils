@@ -4,6 +4,7 @@ namespace Scandio\lmvc\utils\logger\scribes;
 
 use Scandio\lmvc\utils\logger\loggers;
 use Scandio\lmvc\utils\logger\interfaces;
+use Scandio\lmvc\utils\logger\formatters;
 
 abstract class AbstractScribe implements interfaces\ScribeInterface
 {
@@ -12,7 +13,6 @@ abstract class AbstractScribe implements interfaces\ScribeInterface
       $formatter    = null;
 
     abstract public function scribe($message, $context, $level);
-    abstract public function initialize($config);
 
     public function getFormatter()
     {
@@ -29,6 +29,19 @@ abstract class AbstractScribe implements interfaces\ScribeInterface
         return $this->level;
     }
 
+    public function initialize($config)
+    {
+        $formatterInstance = new $config->formatter;
+
+        if ($this->_isValidFormatter($formatterInstance)) {
+            $this->_setFormatter($formatterInstance);
+        } else {
+            trigger_error('Tried to register invalid formatter scribe with namespace: ' . $config->formatter . ' falling back to NullFormatter!', E_USER_WARNING);
+
+            $this->_setFormatter(new formatters\NullFormatter());
+        }
+    }
+
     protected function _omitMessage($level)
     {
         return loggers\LogLevel::bigger($level, $this->getLevel());
@@ -37,5 +50,19 @@ abstract class AbstractScribe implements interfaces\ScribeInterface
     protected function formatLog($message, $context)
     {
         return $this->getFormatter()->format($message, $context);
+    }
+
+    private function _isValidFormatter($formatterInstance)
+    {
+        if($formatterInstance instanceof interfaces\FormatterInterface) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function _setFormatter($formatter)
+    {
+        $this->formatter = $formatter;
     }
 } 
