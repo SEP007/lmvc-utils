@@ -13,7 +13,7 @@ use Scandio\lmvc\utils\traits;
  *
  * Main logger implementing NullLogger (not needed) but safety fallback.
  */
-class Logger extends loggers\NullLogger
+class Logger extends loggers\AbstractLogger
 {
     use traits\Singleton;
 
