@@ -22,7 +22,7 @@ class FileScribe extends AbstractScribe
 
     private function _write($message)
     {
-        $this->_fileObject->fwrite($message);
+        $this->_fileObject->fwrite($message."\n");
     }
 
     private function _openStream()
