@@ -25,7 +25,7 @@ class Logger extends loggers\NullLogger
         $scribes = (array) Config::get()->logger->scribes;
 
         foreach ($scribes as $scribe) {
-            $this->addScribe($scribe->namespace);
+            $this->addScribe($scribe->namespace, $scribe);
         }
     }
 
@@ -51,15 +51,16 @@ class Logger extends loggers\NullLogger
      * Adds a scribe to the logger.
      *
      * @param $namespace of scribe used to instantiate it in the process
+     * @param @config to be passed into scribe's initialization
      * @return bool indicating if adding scribe was successful
      */
-    public function addScribe($namespace)
+    public function addScribe($namespace, $config)
     {
         $scribeInstance = new $namespace;
 
         if ( $this->_isValidScribe($scribeInstance) ) {
             if (!array_key_exists($namespace, $this->scribes)) {
-                $scribeInstance->initialize();
+                $scribeInstance->initialize($config);
 
                 $this->scribes[$namespace] = $scribeInstance;
 

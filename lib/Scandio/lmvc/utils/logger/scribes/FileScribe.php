@@ -34,12 +34,10 @@ class FileScribe extends AbstractScribe
 
     }
 
-    public function initialize()
+    public function initialize($config)
     {
-        $config = Config::get()->logger;
-
-        $this->_logPath = $config->logRoot . DIRECTORY_SEPARATOR . $config->scribes->file->path;
-        $this->setLevel($config->scribes->file->level);
+        $this->_logPath = Config::get()->logger->logRoot . DIRECTORY_SEPARATOR . $config->path;
+        $this->setLevel($config->level);
 
         $this->_openStream();
     }

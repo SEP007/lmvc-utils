@@ -12,7 +12,7 @@ abstract class AbstractScribe implements interfaces\ScribeInterface
       $formatter    = null;
 
     abstract public function scribe($message, $context, $level);
-    abstract public function initialize();
+    abstract public function initialize($config);
 
     public function getFormatter()
     {

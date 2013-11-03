@@ -12,7 +12,7 @@ interface ScribeInterface
 {
     public function scribe($message, $context, $level);
 
-    public function initialize();
+    public function initialize($config);
     public function getFormatter();
     public function setLevel($level);
     public function getLevel();
