@@ -57,10 +57,10 @@ class LogLevel
      */
     public static function bigger($level, $config = null)
     {
-        # Easy fallback to config level (needed for scribes to pass in their level)
-        $config = $config === null ?: Config::get()->logger->level;
+        $level  = is_integer($level) ? $level : static::getLevelConstant($level);
+        $config = is_integer($config) ? $config : static::getLevelConstant(Config::get()->logger->level);
 
-        return static::getLevelConstant($level) >= static::getLevelConstant($config);
+        return $level >= $config;
     }
 
     /**
