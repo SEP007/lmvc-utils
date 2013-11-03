@@ -5,8 +5,7 @@
         "scribes": [{
             "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\FileScribe",
             "level": "INFO",
-            "path": "logs",
-            "file": "log.log"
+            "path": "logs"
         }]
     }
 }

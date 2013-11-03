@@ -28,16 +28,17 @@ class FileScribe extends AbstractScribe
     private function _openStream()
     {
         try {
-            $this->_fileObject = new \SplFileObject($this->_logPath, 'a');
+            $fileName = $this->_logPath . DIRECTORY_SEPARATOR . $this->_logFile;
+            $this->_fileObject = new \SplFileObject($fileName, 'a+');
         } catch (\RuntimeException $ex) {
-            trigger_error('Logger scribe ' . __CLASS__ . ' could not open stream: ' . $this->_logPath . '.', E_USER_WARNING);
+            trigger_error('Logger scribe ' . __CLASS__ . ' could not open its stream.', E_USER_WARNING);
         }
     }
 
     public function initialize($config)
     {
         $this->_logPath = $this->_getLogPath(Config::get()->logger->logRoot, $config->path);
-        $this->_logFile = $config->file;
+        $this->_logFile = date('d') . '.log';
 
         $this->setLevel($config->level);
 
@@ -48,10 +49,13 @@ class FileScribe extends AbstractScribe
     {
         $year   = date('Y');
         $month  = date('F');
-        $day    = date('d');
 
-        return
+        $path   =
           $root . DIRECTORY_SEPARATOR . $scribe . DIRECTORY_SEPARATOR .
-          $year . DIRECTORY_SEPARATOR . $month . DIRECTORY_SEPARATOR . $day;
+          $year . DIRECTORY_SEPARATOR . $month;
+
+        mkdir($path, 0777, true);
+
+        return $path;
     }
 }
