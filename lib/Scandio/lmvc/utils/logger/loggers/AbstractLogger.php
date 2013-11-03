@@ -122,4 +122,16 @@ abstract class AbstractLogger implements interfaces\LoggerInterface
     {
         $this->log(LogLevel::DEBUG, $message, $context);
     }
+
+    /**
+     * Detailed debug information.
+     *
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public function warn($message, array $context = array())
+    {
+        $this->log(LogLevel::WARNING, $message, $context);
+    }
 }
