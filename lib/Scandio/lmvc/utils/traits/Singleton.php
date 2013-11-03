@@ -1,6 +1,6 @@
 <?php
 
-namespace Scandio\lmvc\traits;
+namespace Scandio\lmvc\utils\traits;
 
 /**
  * Class Singleton
@@ -9,7 +9,7 @@ namespace Scandio\lmvc\traits;
  */
 trait Singleton
 {
-    # The insatnce
+    # The instance
     private static $instance;
 
     public static function instance()

@@ -5,7 +5,7 @@ namespace Scandio\lmvc\utils\logger;
 use Scandio\lmvc\utils\config\Config;
 use Scandio\lmvc\utils\logger\interfaces;
 use Scandio\lmvc\utils\logger\loggers\LogLevel;
-use Scandio\lmvc\traits;
+use Scandio\lmvc\utils\traits;
 
 /**
  * Class Logger
