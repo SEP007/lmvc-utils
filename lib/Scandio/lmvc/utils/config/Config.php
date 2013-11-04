@@ -30,11 +30,7 @@ class Config
      */
     public static function get()
     {
-        if (is_null(self::$config)) {
-            self::$config = new \stdClass();
-        }
-
-        return self::$config;
+        return (object) self::$config;
     }
 
     /**

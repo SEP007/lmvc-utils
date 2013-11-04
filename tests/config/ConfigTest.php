@@ -17,7 +17,7 @@ class ConfigTest extends PHPUnit_Framework_TestCase
     public function testUninitializedConfig()
     {
         # Silent to omit warning and test for empty value
-        $this->assertEmpty(@Config::get()->appPath);
+        $this->assertEmpty(Config::get()->modules);
     }
 
     public function testDefaultValues()
