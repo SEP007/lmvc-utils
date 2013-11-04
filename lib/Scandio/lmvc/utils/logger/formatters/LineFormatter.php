@@ -19,12 +19,15 @@ class LineFormatter extends AbstractFormatter
      *
      * TODO:
      *  - Should have a configurable log-format-string int LVCConfig
-     *
-     * @param array $entry
-     * @return string
      */
     public function format($message, $context)
     {
-        return $this->_interpolate($message, $context);
+        $normalizedContext = [];
+
+        foreach($context as $key => $unnormalized) {
+            $normalizedContext[$key] = $this->normalize($unnormalized);
+        }
+
+        return $this->_interpolate($message, $normalizedContext);
     }
 }
