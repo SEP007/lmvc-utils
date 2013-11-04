@@ -3,6 +3,7 @@
 namespace Scandio\lmvc\utils\logger\scribes;
 
 use Scandio\lmvc\utils\config\Config;
+use Scandio\lmvc\utils\logger\loggers\LogLevel;
 
 class FileScribe extends AbstractScribe
 {
@@ -14,9 +15,13 @@ class FileScribe extends AbstractScribe
     public function scribe($message, $context, $level)
     {
         if ( !$this->_omitMessage($level) ) {
-            $this->_write(
-                $this->getFormatter()->format($message, $context)
-            );
+            $levelName  = '[' . LogLevel::getLevelName($level) . ']';
+            $date       = ':(' . date("H:i:s") . ')';
+            $formatted  = $this->getFormatter()->format($message, $context);
+
+            $logMessage = $levelName . $date . ' :: ' . $formatted;
+
+            $this->_write($logMessage);
         }
     }
 

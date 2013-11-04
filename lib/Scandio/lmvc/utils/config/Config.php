@@ -45,9 +45,7 @@ class Config
             self::$config = (array) self::$config;
 
             foreach (array_keys((array) $overwrite) as $entry) {
-                if (!isset(self::$config->$entry)) {
-                    self::$config[$entry] = $overwrite->$entry;
-                }
+                self::$config[$entry] = $overwrite->$entry;
             }
 
             self::$config = (object) self::$config;
