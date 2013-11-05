@@ -54,9 +54,11 @@ class TestLineFormatter extends PHPUnit_Framework_TestCase
 
     public function testFormattingException()
     {
-        $this->assertEquals(
-            "Test {\"type\":\"Exception\",\"extra\":[\"Exception\",\"\/Volumes\/HDD\/Development\/sep007\/lmvc-utils\/tests\/logger\/formatters\/TestLineFormatter.php:59\"],\"payload\":\"\"}",
-            $this->_formatter->format("Test {variable}", ['variable' => new \Exception()])
+        $this->assertTrue(
+            strpos(
+                $this->_formatter->format("Test {variable}", ['variable' => new \Exception()]),
+                "Test {\"type\":\"Exception\",\"extra\":[\"Exception\",\"\/Volumes\/HDD\/Development\/sep007\/lmvc-utils\/tests\/logger\/formatters\/TestLineFormatter.php:59\"],\"payload\":\"\"}"
+            ) !== false
         );
     }
 }
