@@ -32,4 +32,9 @@ class StringUtilsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(StringUtils::camelCaseFrom($this->camelCased1), $this->deCamelCased1);
     }
+
+    public function testBytesOfString()
+    {
+        $this->assertEquals(StringUtils::bytes($this->camelCased1), 19);
+    }
 }
