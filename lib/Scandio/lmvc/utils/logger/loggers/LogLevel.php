@@ -16,6 +16,7 @@ class LogLevel
     const INFO      = 200;
     const NOTICE    = 250;
     const WARNING   = 300;
+    const WARN      = 300;
     const EMERGENCY = 350;
     const ALERT     = 400;
     const CRITICAL  = 450;
@@ -60,7 +61,7 @@ class LogLevel
         $level  = is_integer($level) ? $level : static::getLevelConstant($level);
         $config = is_integer($config) ? $config : static::getLevelConstant(Config::get()->logger->level);
 
-        return $level >= $config;
+        return !($level <= $config);
     }
 
     /**

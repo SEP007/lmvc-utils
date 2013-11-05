@@ -21,7 +21,7 @@ abstract class AbstractScribe implements interfaces\ScribeInterface
 
     public function setLevel($level)
     {
-        $this->level = $level;
+        $this->level = is_integer($level) ? $level : loggers\LogLevel::getLevelConstant($level);
     }
 
     public function getLevel()
@@ -40,6 +40,8 @@ abstract class AbstractScribe implements interfaces\ScribeInterface
 
             $this->_setFormatter(new formatters\NullFormatter());
         }
+
+        $this->setLevel($config->level);
     }
 
     protected function _omitMessage($level)

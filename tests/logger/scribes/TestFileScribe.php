@@ -24,11 +24,11 @@ class TestFileScribe extends PHPUnit_Framework_TestCase
     public function testSimpleLogMessage()
     {
         $msg = 'Hello World';
-        $this->assertEquals(38, $this->_scribe->scribe($msg, [], "ERROR"));
+        $this->assertEquals(38, $this->_scribe->scribe($msg, [], "INFO"));
     }
 
     public function testInterpolatedLogMessage()
     {
-        $this->assertEquals(38, $this->_scribe->scribe("Hello {who}", ['who' => 'World'], "ERROR"));
+        $this->assertEquals(38, $this->_scribe->scribe("Hello {who}", ['who' => 'World'], "INFO"));
     }
 }

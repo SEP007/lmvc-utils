@@ -20,8 +20,10 @@ class Logger extends loggers\AbstractLogger
     protected
         $scribes = [];
 
-    public function initialize()
+    public function initialize($reinitialize = false)
     {
+        if ($reinitialize === true) { $this->scribes = []; }
+
         $scribes = (array) Config::get()->logger->scribes;
 
         foreach ($scribes as $scribe) {
@@ -42,11 +44,13 @@ class Logger extends loggers\AbstractLogger
         # Global log level, no scribe should overwrite this. So don't call function on them
         if ( LogLevel::bigger($level) ) { return false; }
 
+        $outcomes = [];
+
         foreach ($this->scribes as $scribe) {
-            $outcome[get_class($scribe)] = $scribe->scribe($message, $context, $level);
+            $outcomes[get_class($scribe)] = $scribe->scribe($message, $context, $level);
         }
 
-        return $outcome;
+        return $outcomes;
     }
 
     /**
