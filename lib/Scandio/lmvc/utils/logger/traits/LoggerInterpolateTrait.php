@@ -15,6 +15,8 @@ trait LoggerInterpolateTrait
     {
         // build a replacement array with braces around the context keys
         $replace = array();
+        $message = (string) $message;
+
         foreach ($context as $key => $val) {
             $replace['{' . $key . '}'] = $val;
         }

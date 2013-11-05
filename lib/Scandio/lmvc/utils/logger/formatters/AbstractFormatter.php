@@ -120,6 +120,6 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
      */
     protected function toJson($data)
     {
-        return json_encode($data);
+        return is_scalar($data) ? $data : json_encode($data);
     }
 }

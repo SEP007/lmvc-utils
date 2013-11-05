@@ -20,12 +20,12 @@ class LineFormatter extends AbstractFormatter
      * TODO:
      *  - Should have a configurable log-format-string int LVCConfig
      */
-    public function format($message, $context)
+    public function format($message, $context = [])
     {
         $normalizedContext = [];
 
         foreach($context as $key => $unnormalized) {
-            $normalizedContext[$key] = $this->normalize($unnormalized);
+            $normalizedContext[$key] = $this->toJson($this->normalize($unnormalized));
         }
 
         return $this->_interpolate($message, $normalizedContext);
