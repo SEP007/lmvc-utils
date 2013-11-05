@@ -10,21 +10,21 @@ and integratable with any future project.
 
 A set of string utilities for e.g. capitalization or converting strings from dashed to their camelcased equivalent.
 
-[Readme](lib/Scandio/lmvc/util/string)
+[Readme](lib/Scandio/lmvc/utils/string)
 
 ## Bootstrap
 
 A Butler and an Interface for a Bootstrap file used in lmvc to bootstrap modules or utils. The BootstrapInterface's
 implementation will be called when giving the `Butler::initialize($namespace)` a correct implementation.
 
-[Readme](lib/Scandio/lmvc/util/bootstrap)
+[Readme](lib/Scandio/lmvc/utils/bootstrap)
 
 ## Config
 
 A class offering the ability to load json files into a Config manager which will extend entries according to latest-entry
 wins. Entries can then easily be used all over an application.
 
-[Readme](lib/Scandio/lmvc/util/config)
+[Readme](lib/Scandio/lmvc/utils/config)
 
 ## Logger
 
@@ -32,10 +32,10 @@ An PSR-3 compliant convention-over-configuration logger which can be easily inte
 Configuration is accomplished through a `config.json` directive. Moreover, this implementation offers multiple
 independent scribes per instance all having a custom *local* LogLevel.
 
-[Readme](lib/Scandio/lmvc/util/logger)
+[Readme](lib/Scandio/lmvc/utils/logger)
 
 ## Traits
 
 A currently minimal set of traits designed to be applicable in as many use cases as possible.
 
-[Readme](lib/Scandio/lmvc/util/traits)
+[Readme](lib/Scandio/lmvc/utils/traits)
