@@ -43,7 +43,7 @@ class Logger extends loggers\AbstractLogger
         if ( LogLevel::bigger($level) ) { return false; }
 
         foreach ($this->scribes as $scribe) {
-            $outcome[$scribe] = $scribe->scribe($message, $context, $level);
+            $outcome[get_class($scribe)] = $scribe->scribe($message, $context, $level);
         }
 
         return $outcome;
