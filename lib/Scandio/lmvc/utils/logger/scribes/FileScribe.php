@@ -23,6 +23,8 @@ class FileScribe extends AbstractScribe
 
             return $this->_write($logMessage);
         }
+
+        return false;
     }
 
     private function _write($message)
