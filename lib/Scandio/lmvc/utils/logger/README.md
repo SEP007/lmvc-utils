@@ -30,6 +30,9 @@ Moreover, every scribe must come with a formatter to format the log-messages in 
 Scibes and Formatters must be implemented using their interface and will not be added at the `Logger::instance()->initialize()`.
 Anyhow, both come with an abstract extension already aggregating most of the redundant work.
 
+The main purpose of having scribes and formatters is to offer a decent extensibility. Hereby, scribes and formatters
+for ChomePHP, WebSockets or even IRC/Chat rooms could be implemented.
+
 Currently the logger supports the following levels:
 
 ```php
