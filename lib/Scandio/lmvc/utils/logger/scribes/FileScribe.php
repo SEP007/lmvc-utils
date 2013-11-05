@@ -21,13 +21,13 @@ class FileScribe extends AbstractScribe
 
             $logMessage = $levelName . $date . ' :: ' . $formatted;
 
-            $this->_write($logMessage);
+            return $this->_write($logMessage);
         }
     }
 
     private function _write($message)
     {
-        $this->_fileObject->fwrite($message."\n");
+        return $this->_fileObject->fwrite($message."\n");
     }
 
     private function _openStream()
