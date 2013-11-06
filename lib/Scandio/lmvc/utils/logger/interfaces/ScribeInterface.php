@@ -10,8 +10,10 @@ namespace Scandio\lmvc\utils\logger\interfaces;
  */
 interface ScribeInterface
 {
+    # The scribe's function being called from the Logger upon logging request
     public function scribe($message, $context, $level);
 
+    # A set of functions all implemented in the AbstractScribe as they mostly won't differ
     public function initialize($config);
     public function getFormatter();
     public function setLevel($level);

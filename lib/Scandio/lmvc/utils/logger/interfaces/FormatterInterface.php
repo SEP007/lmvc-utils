@@ -11,5 +11,6 @@ namespace Scandio\lmvc\utils\logger\interfaces;
  */
 interface FormatterInterface
 {
+    # To be implemented by concrete formatter to format $message within $context
     public function format($message, $context);
 }

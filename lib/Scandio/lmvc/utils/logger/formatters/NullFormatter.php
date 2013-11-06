@@ -8,7 +8,7 @@ use Scandio\lmvc\utils\logger\traits;
  * Class FileLogFormatter
  * @package Scandio\lmvc\utils\logger\formatters
  *
- * Formatter for logging into files.
+ * NullFormatter which prevents just concats $message and the $context.
  */
 class NullFormatter extends AbstractFormatter
 {

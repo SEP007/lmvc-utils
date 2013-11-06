@@ -20,18 +20,22 @@ class Butler
      */
     public static function initialize($namespaces)
     {
+        # Make $namespaces and array if passed as string
         $namespaces     = (array) $namespaces;
         $bootstrapped   = [];
 
         foreach ($namespaces as $namespace) {
             $bootstrap = $namespace . '\\Bootstrap';
 
+            # Only if its a class which exists
             if (class_exists($bootstrap)) {
                 $namespaceLoader = new $bootstrap;
 
+                # ... and it implements the interface
                 if($namespaceLoader instanceof BootstrapInterface) {
                     $bootstrapped[] = $namespaceLoader;
 
+                    # ... call initialize on the Bootstrap
                     $namespaceLoader->initialize();
                 }
             }

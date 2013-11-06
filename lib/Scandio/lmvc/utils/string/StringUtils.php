@@ -33,6 +33,13 @@ class StringUtils
         }, explode($delimiter, $otherString))));
     }
 
+    /**
+     * Counts the number of bytes which a string is long. In other words: returns
+     * the string's byte-length.
+     *
+     * @param $string which bytes shall be counted
+     * @return int number of bytes in string
+     */
     public static function bytes($string)
     {
         $strlen_var = strlen($string);

@@ -20,6 +20,11 @@ class Logger extends loggers\AbstractLogger
     protected
         $scribes = [];
 
+    /**
+     * Initializes the logger setting e.g. up the scribes.
+     *
+     * @param bool $reinitialize if true reinitialization will be performed
+     */
     public function initialize($reinitialize = false)
     {
         if ($reinitialize === true) { $this->scribes = []; }
@@ -34,10 +39,11 @@ class Logger extends loggers\AbstractLogger
     /**
      * Logs with an arbitrary level.
      *
-     * @param mixed $level
-     * @param string $message
-     * @param array $context
-     * @return null
+     * @param mixed $level int or string which to be logged
+     * @param string $message to be logged
+     * @param array $context to possibly be interpolated into message
+     *
+     * @return array the outcome of every single scribe
      */
     public function log($level, $message, array $context = array())
     {
@@ -46,6 +52,7 @@ class Logger extends loggers\AbstractLogger
 
         $outcomes = [];
 
+        # Call on every registered scribe
         foreach ($this->scribes as $scribe) {
             $outcomes[get_class($scribe)] = $scribe->scribe($message, $context, $level);
         }
@@ -64,7 +71,9 @@ class Logger extends loggers\AbstractLogger
     {
         $scribeInstance = new $namespace;
 
+        # Only add valid scribes
         if ( $this->_isValidScribe($scribeInstance) ) {
+            # ... if not already added
             if (!array_key_exists($namespace, $this->scribes)) {
                 $scribeInstance->initialize($config);
 
@@ -87,7 +96,9 @@ class Logger extends loggers\AbstractLogger
      */
     public function removeScribe($namespace)
     {
+        # Only try removal if key/namespace is registered
         if (array_key_exists($namespace, $this->scribes)) {
+            # unsets the scribe by its namespace
             unset($this->scribes[$namespace]);
 
             return true;
@@ -102,6 +113,7 @@ class Logger extends loggers\AbstractLogger
      */
     private function _isValidScribe($scribeInstance)
     {
+        # Check given $scribeInstance against namespace
         if($scribeInstance instanceof interfaces\ScribeInterface) {
             return true;
         }

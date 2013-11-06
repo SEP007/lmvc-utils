@@ -12,6 +12,12 @@ trait Singleton
     # The instance
     private static $instance;
 
+    /**
+     * Gets the instance of the class using this trait. Creates the instance if its
+     * not been created yet.
+     *
+     * @return object
+     */
     public static function instance()
     {
         if (!isset(self::$instance)) {
