@@ -1,0 +1,12 @@
+{
+    "logger": {
+        "level": "ERROR",
+        "logRoot": null,
+        "scribes": [{
+            "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\FileScribe",
+            "formatter": "\\Scandio\\lmvc\\utils\\logger\\formatters\\LineFormatter",
+            "level": "ERROR",
+            "path": ""
+        }]
+    }
+}

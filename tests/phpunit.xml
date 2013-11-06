@@ -1,7 +1,10 @@
 <phpunit bootstrap="bootstrap.php" verbose="true" convertWarningsToExceptions="false" colors="true">
    <testsuites>
       <testsuite name="AssetPipeline">
-         <directory suffix=".php">stringutils</directory>
+          <directory suffix=".php">bootstrap</directory>
+          <directory suffix=".php">stringutils</directory>
+          <directory suffix=".php">config</directory>
+          <directory suffix=".php">logger</directory>
       </testsuite>
    </testsuites>
 
