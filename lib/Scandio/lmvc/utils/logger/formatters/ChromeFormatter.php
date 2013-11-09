@@ -42,9 +42,10 @@ class ChromeFormatter extends AbstractFormatter
         $message = $this->_interpolate($message, $normalizedContext);
 
         return [
+            $this->_logLevels[$this->_level],
             $message,
             $backtrace,
-            $this->logLevels[$this->_level],
+            null
         ];
     }
 
