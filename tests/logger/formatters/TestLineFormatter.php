@@ -57,7 +57,7 @@ class TestLineFormatter extends PHPUnit_Framework_TestCase
         $this->assertTrue(
             strpos(
                 $this->_formatter->format("Test {variable}", ['variable' => new \Exception()]),
-                "tests\/logger\/formatters\/TestLineFormatter.php"
+                "TestLineFormatter.php"
             ) !== false
         );
     }
