@@ -79,4 +79,34 @@ class StringUtils
 
         return $d;
     }
+
+    /**
+     * Finds out if a string starts with a given substring.
+     *
+     * @param $haystack the bigger part
+     * @param $needle to subpart
+     * @return bool indicating if string starts with $needle
+     */
+    public static function starts($haystack, $needle)
+    {
+        return !strncmp($haystack, $needle, strlen($needle));
+    }
+
+    /**
+     * Finds out if a string ends with a given substring.
+     *
+     * @param $haystack the bigger part
+     * @param $needle to subpart
+     * @return bool indicating if string starts with $needle
+     */
+    public static function ends($haystack, $needle)
+    {
+        $length = strlen($needle);
+
+        if ($length == 0) {
+            return true;
+        }
+
+        return (substr($haystack, -$length) === $needle);
+    }
 }
