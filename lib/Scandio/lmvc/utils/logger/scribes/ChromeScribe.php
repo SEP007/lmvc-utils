@@ -29,7 +29,6 @@ class ChromeScribe extends AbstractScribe
     {
         # Call the parent
         parent::initialize($config);
-
         $this->setLevel($config->level);
         $this->_headername = $config->headername;
         $this->_version = $config->version;
@@ -38,6 +37,8 @@ class ChromeScribe extends AbstractScribe
     public function scribe($message, $context, $level)
     {
         if ( !$this->_omitMessage($level) ) {
+            $this->getFormatter()->setLevel($level);
+
             $this->_response['rows'][] = $this->getFormatter()->format($message, $context);
 
             $this->_process();
