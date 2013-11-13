@@ -15,6 +15,7 @@ class ChromeFormatter extends AbstractFormatter
 {
     use traits\LoggerInterpolateTrait;
 
+    # Transformed level strings in DevTool's console
     private $_logLevels = [
         LogLevel::DEBUG     => 'log',
         LogLevel::INFO      => 'info',
@@ -33,14 +34,15 @@ class ChromeFormatter extends AbstractFormatter
     {
         $backtrace = 'UNKNOWN';
 
+        # Normalizes everything in the context
         $normalizedContext = [];
-
         foreach($context as $key => $unnormalized) {
             $normalizedContext[$key] = $this->toJson($this->normalize($unnormalized));
         }
 
-        $message = $this->_interpolate($message, $normalizedContext);
+        $message = $this->_interpolate($message, $normalizedContext, true);
 
+        # Returns an array of columns for the logger
         return [
             $this->_logLevels[$this->_level],
             $message,
