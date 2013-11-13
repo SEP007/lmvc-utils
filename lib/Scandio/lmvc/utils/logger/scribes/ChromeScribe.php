@@ -56,6 +56,11 @@ class ChromeScribe extends AbstractScribe
         return false;
     }
 
+    public function getResponse()
+    {
+        return $this->_response;
+    }
+
     private function _process()
     {
         if ($this->_initialized !== true) {
@@ -94,7 +99,7 @@ class ChromeScribe extends AbstractScribe
     private function _sendWithHeaders($data)
     {
         # As headers can be not accepted (browser not chrome) this is a noop
-        if ($this->_headersAccepted === true) {
+        if (!headers_sent() && $this->_headersAccepted === true) {
             header(sprintf('%s: %s', $this->_headername, $data));
         }
     }

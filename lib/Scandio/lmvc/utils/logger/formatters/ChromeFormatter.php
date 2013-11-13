@@ -44,7 +44,9 @@ class ChromeFormatter extends AbstractFormatter
 
         # Returns an array of columns for the logger
         return [
-            $this->_logLevels[$this->_level],
+            isset($this->_logLevels[ $this->_level ]) ?
+              $this->_logLevels[ $this->_level ] :
+              $this->_level,
             $message,
             $backtrace,
             null

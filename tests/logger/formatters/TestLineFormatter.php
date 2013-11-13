@@ -39,7 +39,7 @@ class TestLineFormatter extends PHPUnit_Framework_TestCase
     public function testFormattingObject()
     {
         $this->assertEquals(
-            "Test {\"type\":\"Object\",\"extra\":[\"stdClass\"],\"payload\":{}}",
+            "Test {\"type\":\"Object\",\"extra\":\"stdClass\",\"payload\":{}}",
             $this->_formatter->format("Test {variable}", ['variable' => new \stdClass()])
         );
     }
@@ -47,7 +47,7 @@ class TestLineFormatter extends PHPUnit_Framework_TestCase
     public function testFormattingDate()
     {
         $this->assertEquals(
-            "Test {\"type\":\"Date\",\"extra\":[],\"payload\":\"\"}",
+            "Test {\"type\":\"Date\",\"extra\":null,\"payload\":\"\"}",
             $this->_formatter->format("Test {variable}", ['variable' => new \DateTime()])
         );
     }

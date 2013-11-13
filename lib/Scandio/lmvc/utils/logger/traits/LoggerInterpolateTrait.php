@@ -24,34 +24,4 @@ trait LoggerInterpolateTrait
         // interpolate replacement values into the message and return
         return strtr($message, $replace);
     }
-
-    /**
-     * Interpolate a message with a context but returns the interpolated
-     * sub-parts as an array.
-     */
-    private function _interpolateAsArray($message, array $context = [])
-    {
-        // build a replacement array with braces around the context keys
-        $replace  = [];
-        $matches  = [];
-        $messages = [];
-        $response = [];
-
-        preg_match_all('/\{([^}]*)\}/', $message, $matches);
-
-        foreach ($matches[0] as $match) {
-            $messages[] = $match;
-        }
-
-        foreach ($context as $key => $val) {
-            $replace['{' . $key . '}'] = $val;
-        }
-
-        foreach ($messages as $submessage) {
-            $response[] = strstr($submessage, $replace);
-        }
-
-        // interpolate replacement values into the message and return
-        return $response;
-    }
 }
