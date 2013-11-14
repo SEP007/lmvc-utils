@@ -30,6 +30,16 @@ class ChromeFormatter extends AbstractFormatter
     private
       $_level = null;
 
+    /**
+     * Formats a message for the ChromeScribe by normalizing, interpolating
+     * it and returning it as an array which correspond to the logger's
+     * rows.
+     *
+     * @param $message to be formatted, may contain placeholders as its to be interpolated
+     * @param array $context the variables interpolated into the $message
+     *
+     * @return array containing rows for ChromeScribe in [lvel, message, backtrace, null]
+     */
     public function format($message, $context = [])
     {
         $backtrace = 'UNKNOWN';
@@ -40,6 +50,7 @@ class ChromeFormatter extends AbstractFormatter
             $normalizedContext[$key] = $this->toJson($this->normalize($unnormalized));
         }
 
+        # Interpolates the message with the previously normalized context
         $message = $this->_interpolate($message, $normalizedContext, true);
 
         # Returns an array of columns for the logger
@@ -53,6 +64,11 @@ class ChromeFormatter extends AbstractFormatter
         ];
     }
 
+    /**
+     * Sets the log level on this formatter as it needs to know for the format-fn's response.
+     *
+     * @param $level to be set on instance variable
+     */
     public function setLevel($level)
     {
         $this->_level = $level;

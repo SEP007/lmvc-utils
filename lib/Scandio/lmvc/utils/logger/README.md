@@ -16,6 +16,12 @@ A basic configuration for the logger would be:
             "formatter": "\\Scandio\\lmvc\\utils\\logger\\formatters\\LineFormatter",
             "level": "EMERGENCY",
             "path": "logs"
+        }, {
+            "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\ChromeScribe",
+            "formatter": "\\Scandio\\lmvc\\utils\\logger\\formatters\\ChromeFormatter",
+            "level": "ERROR",
+            "headername": "X-ChromeLogger-Data",
+            "version": "4.0.3"
         }]
     }
 }
