@@ -38,7 +38,7 @@ class ChromeFormatter extends AbstractFormatter
      * @param $message to be formatted, may contain placeholders as its to be interpolated
      * @param array $context the variables interpolated into the $message
      *
-     * @return array containing rows for ChromeScribe in [lvel, message, backtrace, null]
+     * @return array containing rows for ChromeScribe in [level, message, backtrace, null]
      */
     public function format($message, $context = [])
     {
