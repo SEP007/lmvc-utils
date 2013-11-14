@@ -35,8 +35,9 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
         elseif ( is_object($data) ) { return $this->normalizeObject($data); }
         else {
             return [
-                'type' => 'Unknown',
-                'type'  => gettype($data)
+                'type'      => 'Unknown',
+                'extra'     => gettype($data),
+                'payload'   => (string) $data
             ];
         }
     }
@@ -51,7 +52,7 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
     {
         return [
             'type'      => 'Object',
-            'extra'     => [get_class($object)],
+            'extra'     => get_class($object),
             'payload'   => $object
         ];
     }
@@ -72,7 +73,7 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
 
         return [
             'type'      => 'Traversable',
-            'extra'     => [],
+            'extra'     => null,
             'payload'   => $normalized
         ];
     }
@@ -89,7 +90,7 @@ abstract class AbstractFormatter implements interfaces\FormatterInterface
 
         return [
             'type'      => 'Date',
-            'extra'     => [],
+            'extra'     => null,
             'payload'   => $formattedDate
         ];
     }

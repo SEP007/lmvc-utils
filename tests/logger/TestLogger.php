@@ -99,7 +99,7 @@ class TestLogger extends PHPUnit_Framework_TestCase
 
         $outcomes = Logger::instance()->debug("Hello World", []);
 
-        $this->assertCount(0, $outcomes);
+        $this->assertCount(1, $outcomes);
     }
 
     public function testReinitializationOfLogger()

@@ -11,7 +11,7 @@ class Bootstrap extends \Scandio\lmvc\utils\bootstrap\Bootstrap
     public static function configure($logRootDirectory = null)
     {
         # Read default config
-        Config::initialize(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config.json');
+        #Config::initialize(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config.json');
 
         # Only set the log root directory if really given as parameter
         if ($logRootDirectory !== null) { Config::get()->logger->logRoot = $logRootDirectory; }
