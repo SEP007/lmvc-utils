@@ -37,4 +37,24 @@ class StringUtilsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(StringUtils::bytes($this->camelCased1), 19);
     }
+
+    public function testStringStartsWith()
+    {
+        $this->assertTrue(StringUtils::starts("TobiasDeekens", "Tobias"));
+
+        $this->assertFalse(StringUtils::starts("TobiasDeekens", "Tobiasss"));
+        $this->assertFalse(StringUtils::starts("TobiasDeekens", "tobias"));
+        $this->assertTrue(StringUtils::starts(strtolower("TobiasDeekens"), "tobias"));
+    }
+
+    public function testStringEndsWith()
+    {
+        $this->assertTrue(StringUtils::ends("TobiasDeekens", "Deekens"));
+
+        $this->assertTrue(StringUtils::ends("TobiasDeekens", ""));
+
+        $this->assertFalse(StringUtils::ends("TobiasDeekens", "Deekenssss"));
+        $this->assertFalse(StringUtils::ends("TobiasDeekens", "deekens"));
+        $this->assertTrue(StringUtils::ends(strtolower("TobiasDeekens"), "deekens"));
+    }
 }
