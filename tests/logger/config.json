@@ -13,6 +13,10 @@
             "level": "ERROR",
             "headername": "X-ChromeLogger-Data",
             "version": "4.0.3"
+        }, {
+            "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\ScreenScribe",
+            "formatter": "\\Scandio\\lmvc\\utils\\logger\\formatters\\LineFormatter",
+            "level": "ERROR"
         }]
     }
 }
