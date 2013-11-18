@@ -61,7 +61,7 @@ class LogLevel
         $level  = is_integer($level) ? $level : static::getLevelConstant($level);
         $config = is_integer($config) ? $config : static::getLevelConstant(Config::get()->logger->level);
 
-        return !($level <= $config);
+        return ($level >= $config);
     }
 
     /**

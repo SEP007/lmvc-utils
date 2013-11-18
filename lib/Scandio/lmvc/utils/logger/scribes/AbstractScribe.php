@@ -81,7 +81,7 @@ abstract class AbstractScribe implements interfaces\ScribeInterface
      */
     protected function _omitMessage($level)
     {
-        return loggers\LogLevel::bigger($level, $this->getLevel());
+        return !( loggers\LogLevel::bigger($level, $this->getLevel()) );
     }
 
     /**

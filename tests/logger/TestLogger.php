@@ -23,6 +23,7 @@ class TestLogger extends PHPUnit_Framework_TestCase
     public function testInfoLog()
     {
         $outcomes = Logger::instance()->info("Hello World", []);
+
         $this->assertEquals(33, $outcomes[$this->_scribeNamespace]);
 
         $outcomes = Logger::instance()->info("Hello {who}", ['who' => 'World']);
@@ -114,9 +115,9 @@ class TestLogger extends PHPUnit_Framework_TestCase
     public function testLogOmitByGlobalLevel()
     {
         $level = Config::get()->logger->level;
-        Config::get()->logger->level = 'DEBUG';
+        Config::get()->logger->level = 'ERROR';
 
-        $this->assertFalse(Logger::instance()->warning("Hello {who}", ['who' => 'World']));
+        $this->assertFalse(Logger::instance()->info("Hello {who}", ['who' => 'World']));
 
         Config::get()->logger->level = $level;
     }
@@ -124,7 +125,7 @@ class TestLogger extends PHPUnit_Framework_TestCase
     public function testLogOmitByScribeLevel()
     {
         $level = Config::get()->logger->scribes[0]->level;
-        Config::get()->logger->scribes[0]->level = 'DEBUG';
+        Config::get()->logger->scribes[0]->level = 'ERROR';
 
         Logger::instance()->initialize(true);
 

@@ -1,22 +1,22 @@
 {
     "logger": {
-        "level": "ERROR",
+        "level": "DEBUG",
         "logRoot": null,
         "scribes": [{
             "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\FileScribe",
             "formatter": "\\Scandio\\lmvc\\utils\\logger\\formatters\\LineFormatter",
-            "level": "ERROR",
+            "level": "DEBUG",
             "path": ""
         }, {
             "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\ChromeScribe",
             "formatter": "\\Scandio\\lmvc\\utils\\logger\\formatters\\ChromeFormatter",
-            "level": "ERROR",
+            "level": "DEBUG",
             "headername": "X-ChromeLogger-Data",
             "version": "4.0.3"
         }, {
             "namespace": "\\Scandio\\lmvc\\utils\\logger\\scribes\\ScreenScribe",
             "formatter": "\\Scandio\\lmvc\\utils\\logger\\formatters\\LineFormatter",
-            "level": "ERROR"
+            "level": "DEBUG"
         }]
     }
 }

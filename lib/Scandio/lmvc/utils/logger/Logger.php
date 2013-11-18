@@ -48,7 +48,7 @@ class Logger extends loggers\AbstractLogger
     public function log($level, $message, array $context = array())
     {
         # Global log level, no scribe should overwrite this. So don't call function on them
-        if ( LogLevel::bigger($level) ) { return false; }
+        if ( !LogLevel::bigger($level) ) { return false; }
 
         $outcomes = [];
 
