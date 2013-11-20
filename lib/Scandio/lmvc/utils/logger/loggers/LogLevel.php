@@ -48,7 +48,7 @@ class LogLevel
     }
 
     /**
-     * Takes a log level string and returns if logging should happen according to config value.
+     * Takes a log level string and returns if the level is bigger than the configured one
      *
      * For this, the string (config and given) will be transformed into level constant which is an
      * integer which two will then be compared.
@@ -61,7 +61,22 @@ class LogLevel
         $level  = is_integer($level) ? $level : static::getLevelConstant($level);
         $config = is_integer($config) ? $config : static::getLevelConstant(Config::get()->logger->level);
 
-        return !($level <= $config);
+        return ($level >= $config);
+    }
+
+    /**
+     * Takes a log level string and returns if the level is smaller than the configured one
+     *
+     * For this, the string (config and given) will be transformed into level constant which is an
+     * integer which two will then be compared.
+     *
+     * @param $level to be checked if its bigger or equals compared to the config level
+     * @return bool indicating if logging should be performed
+     */
+    public static function smaller($level, $config = null)
+    {
+        # it's smaller if it ain't bigger
+        return ! (static::bigger($level, $config));
     }
 
     /**
